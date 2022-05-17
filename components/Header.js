@@ -4,7 +4,7 @@ import Nav from "./Nav";
 const Header = () => {
   return (
     <header>
-      <h1>Make your own quiz</h1>
+      <h1 className="text-center">Welcome to the quiz</h1>
       <Nav />
     </header>
   );

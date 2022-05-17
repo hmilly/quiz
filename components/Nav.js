@@ -4,20 +4,15 @@ import Link from "next/link";
 const Nav = () => {
   return (
     <nav>
-      <ul>
+      <ul className="inline-flex p-2 border">
         <li>
           <Link href="/">
             <a>Home</a>
           </Link>
         </li>
         <li>
-          <Link href="/get-started">
-            <a>Get Started</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/overview">
-            <a>Overview</a>
+          <Link href="/play">
+            <a>Play</a>
           </Link>
         </li>
       </ul>
