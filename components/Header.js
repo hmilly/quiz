@@ -1,11 +1,9 @@
 import React from "react";
-import Nav from "./Nav";
 
 const Header = () => {
   return (
-    <header>
-      <h1 className="text-center">Welcome to the quiz</h1>
-      <Nav />
+    <header className="p-4 border rounded">
+      <h1 className="text-center text-xl">Welcome to the quiz</h1>
     </header>
   );
 };

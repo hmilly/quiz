@@ -3,6 +3,32 @@
 @tailwind utilities;
 
 
-a{
-    padding: 10px;
-}
+.custom-border {
+    width: auto;
+    height: 40px;
+    position: relative;
+    background: navy;
+  }
+  .custom-border:after {
+    content: "";
+    position: absolute;
+    left: -20px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-right: 20px solid navy;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+  }
+  
+  .custom-border:before {
+    content: "";
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid navy;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+  }
