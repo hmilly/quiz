@@ -1,18 +1,30 @@
 import React from "react";
 
-const LifeLines = ({ hints, setHints }) => {
-  const clicked = (h, i) => {
-    console.log(h, i);
+const LifeLines = ({
+  allHints,
+  setAllHints,
+  answers,
+  correctAnswer,
+  setCurrentQuestion,
+}) => {
+  const selectLifeline = (hint, i) => {
+    const newArr = [...allHints];
+    newArr[i] = { ...hint, used: true };
+    setAllHints(newArr);
   };
 
   return (
-    <div className="row-start-1 grid grid-cols-1 grid-rows-[1fr_2fr]">
-      <section className="text-white grid grid-cols-3 justify-items-center content-center m-8">
-        {hints.map((h, i) => (
-          <button onClick={() => clicked(h, i)} key={i} disabled={h.used}>
-            <p className="rounded-full border-6 bg-black border-blue-400 p-3 w-20 text-center">
-              {h.name}
-            </p>
+    <div className="row-start-1 grid grid-cols-[auto_1fr] grid-rows-1">
+      <section className="text-white grid grid-cols-1fr grid-rows-3 items-center px-4">
+        {allHints.map((hint, i) => (
+          <button
+            onClick={() => selectLifeline(hint, i)}
+            key={i}
+            disabled={hint.used}
+            className={`rounded-full border-6 bg-black p-3 w-32 h-20 
+          ${hint.used ? "border-red-900 line-through " : "border-blue-400 "}`}
+          >
+            {hint.name}
           </button>
         ))}
       </section>
