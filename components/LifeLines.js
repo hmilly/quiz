@@ -1,16 +1,34 @@
+import Image from "next/image";
 import React from "react";
 
-const LifeLines = ({
-  allHints,
-  setAllHints,
-  answers,
-  correctAnswer,
-  setCurrentQuestion,
-}) => {
+const LifeLines = ({ allHints, setAllHints, questionObj, setQuestionObj }) => {
   const selectLifeline = (hint, i) => {
-    const newArr = [...allHints];
-    newArr[i] = { ...hint, used: true };
-    setAllHints(newArr);
+    // Set new hints - disable used button
+    const newHintsArr = [...allHints];
+    newHintsArr[i] = { ...hint, used: true };
+    setAllHints(newHintsArr);
+
+    // find id of correct answer and other random id
+    const correctID = questionObj.answers.indexOf(questionObj.correctAnswer);
+    const randomID = () => {
+      const r = 0;
+      while (r === correctID) {
+        r = Math.round(Math.random() * 4);
+      }
+      return r;
+    };
+
+    const generatedId = randomID();
+    const newQuestionsArray = [...questionObj.answers];
+
+    // Remove 2 wrong answers from the answers array
+    newQuestionsArray.map((q, i) => {
+      i !== generatedId && i !== correctID
+        ? (newQuestionsArray[i] = "")
+        : (newQuestionsArray[i] = q);
+    });
+
+    setQuestionObj({ ...questionObj, answers: newQuestionsArray });
   };
 
   return (
@@ -28,8 +46,18 @@ const LifeLines = ({
           </button>
         ))}
       </section>
-      {/* <img>
-      </img> */}
+
+      <div className=" self-center justify-self-center ">
+        <Image
+          loading="lazy"
+          src="/quiz.jpg"
+          alt="quiz"
+          width="366px"
+          height="366px"
+          objectFit="contain"
+        />
+      </div>
+      <p></p>
     </div>
   );
 };
