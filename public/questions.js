@@ -78,7 +78,7 @@ export const questionsArr = {
         "Cape, velvet jacket and frilly shirt",
       ],
       correctAnswer: "Wide-brimmed hat and extra long scarf",
-      worth: 1600,
+      worth: 16000,
     },
     {
       id: 10,
@@ -150,3 +150,8 @@ export const questionsArr = {
   ],
 };
 
+export const startingHints = [
+  { name: "50/50", used: false },
+  { name: "Hint 1", used: false },
+  { name: "Hint 2", used: false },
+];
