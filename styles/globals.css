@@ -4,8 +4,12 @@
 
 @layer components {
   .custom-border {
-    @apply w-auto h-[66px] relative bg-black p-1 mx-5 text-center border-2  border-white
+    @apply w-auto h-[66px] relative bg-black  mx-5 text-center border-2 border-white text-white p-3
   after:absolute after:-left-5 after:bottom-0 after:w-0 after:h-0 after:border-y-transparent after:border-y-10 after:border-r-8 after:border-black
   before:absolute before:-right-5 before:bottom-0 before:w-0 before:h-0 before:border-y-transparent before:border-y-10 before:border-l-8 before:border-black;
   }
+}
+
+.star {
+  transition: 2s;
 }

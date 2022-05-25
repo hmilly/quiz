@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       colors: {
         navy: '#000080',
+        opacityBlack: '#00000090'
       },
     },
     fontFamily: {

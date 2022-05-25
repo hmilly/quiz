@@ -1,18 +1,12 @@
 import Image from "next/image";
 import React from "react";
 
-const LifeLines = ({
-  allHints,
-  setAllHints,
-  questionObj,
-  setQuestionObj,
-  msg,
-}) => {
+const LifeLines = ({ allHints, setAllHints, questionObj, setQuestionObj }) => {
   const manageHints = (hints, i) => {
     // find id of correct answer and other random id
     const correctID = questionObj.answers.indexOf(questionObj.correctAnswer);
     const randomID = (r = 0) => {
-      while (r === correctID) r = Math.round(Math.random() * 4);
+      while (r === correctID) r = Math.round(Math.random() * 3);
       return r;
     };
     const generatedId = randomID();
@@ -51,8 +45,7 @@ const LifeLines = ({
           </button>
         ))}
       </section>
-
-      <div className="relative self-center justify-self-center ">
+      <div className="justify-self-center self-center">
         <Image
           loading="lazy"
           src="/quiz.jpg"
@@ -61,22 +54,7 @@ const LifeLines = ({
           height="366px"
           objectFit="contain"
         />
-        {msg !== "" ? (
-          <span
-            className={`absolute rounded-full opacity-80  transition-all 
-              h-full w-full top-0 left-0 ${
-                msg !== "Congrats!" ? "bg-gradient-to-r from-black  to-gray-800 " : "bg-gradient-to-r from-cyan-500  to-blue-500 "
-              }`}
-          >
-            <p className="absolute inset-y-1/4 w-full text-white text-center text-bold text-[6vw] opacity-100">
-              {msg}
-            </p>
-          </span>
-        ) : (
-          <></>
-        )}
       </div>
-      <p></p>
     </div>
   );
 };

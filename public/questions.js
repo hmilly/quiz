@@ -145,7 +145,7 @@ export const questionsArr = {
         "Captain Kidd",
       ],
       correctAnswer: "Blackbeard",
-      worth: 1000000,
+      worth: "1 MILLION",
     },
   ],
 };
