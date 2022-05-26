@@ -4,36 +4,48 @@ import LifeLines from "../components/LifeLines";
 import Stack from "../components/Stack";
 import Header from "../components/Header";
 import { questionsArr, startingHints } from "../public/questions";
+import { formatMoney, capMoney } from "../fns/functions";
 
 const Start = () => {
   const [questionObj, setQuestionObj] = useState(questionsArr.set_1[0]);
   const [allHints, setAllHints] = useState(startingHints);
-  const [msg, setMsg] = useState(`Welcome to who wants to be a millionaire`);
-  const [play, setPlay] = useState(false);
+  const [endGame, setEndGame] = useState({
+    playing: false,
+    msg: `Welcome to who wants to be a millionaire`,
+  });
 
-  const formatMoney = (amount) =>
-    amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-  const endGame = (msg, amount) => {
-    setPlay(false);
-    setMsg(amount ? `${msg} You took £${formatMoney(amount)}` : `${msg}`);
+  const correctAnswer = (id) => {
+    if (id <= 13) {
+      setTimeout(() => {
+        setQuestionObj(questionsArr.set_1[id]);
+      }, 2000);
+    } else {
+      // id to 15 to highlight correct £ on the board
+      setQuestionObj({ ...questionObj, id: 15 });
+      setEndGame({
+        playing: false,
+        msg: `CONGRATULATIONS - YOU WON $1 MILLION!!`,
+      });
+    }
   };
-
-  const nextQuestion = (id) =>
-    setTimeout(() => {
-      setQuestionObj(questionsArr.set_1[id]);
-    }, 2000);
 
   const analyseAnswer = (answer) => {
     const id = parseInt(questionObj.id);
-
-    if (answer === questionObj.correctAnswer && id + 1 < 15) {
-      nextQuestion(id);
-    } else if (answer === questionObj.correctAnswer && id === 15) {
-      setQuestionObj({ ...questionObj, id: 16 });
-      endGame(`CONGRATULATIONS - YOU WON $1 MILLION!!`);
+    if (answer === questionObj.correctAnswer) {
+      correctAnswer(id);
     } else {
-      endGame(`Too bad!! Try again!`);
+      const cap = capMoney(id);
+      // id to represent correct £ on the board
+      setQuestionObj({ ...questionObj, id: id > 4 ? cap + 2 : -1 });
+      setEndGame({
+        playing: false,
+        msg: `Too bad!! Try again!
+        ${
+          id > 5
+            ? `, you took: £${formatMoney(questionsArr.set_1[cap].worth)}`
+            : ""
+        }`,
+      });
     }
   };
 
@@ -47,22 +59,21 @@ const Start = () => {
           setAllHints={setAllHints}
           questionObj={questionObj}
           setQuestionObj={setQuestionObj}
-          msg={msg}
         />
         <Stack
           questionsArr={questionsArr.set_1}
           questionObj={questionObj}
-          endGame={endGame}
-          formatMoney={formatMoney}
+          setEndGame={setEndGame}
         />
       </div>
-      {!play ? (
+      {/* Display overscreen when game ends */}
+      {!endGame.playing ? (
         <div className="bg-opacityBlack h-full w-full absolute top-0 left-0 grid content-center justify-center gap-10">
-          <p className="custom-border">{msg}</p>
+          <p className="custom-border">{endGame.msg}</p>
           <button
             className="px-16 py-6 rounded-md border-4 m-6 border-black text-3xl font-bold bg-white"
             onClick={() => {
-              setPlay(true);
+              setEndGame({ ...endGame, playing: true });
               setQuestionObj(questionsArr.set_1[0]);
               setAllHints(startingHints);
             }}

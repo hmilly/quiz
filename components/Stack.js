@@ -1,11 +1,15 @@
 import React from "react";
+import { formatMoney } from "../fns/functions";
 
-const Stack = ({ questionsArr, questionObj, endGame, formatMoney }) => {
+const Stack = ({ questionsArr, questionObj, setEndGame }) => {
   const takeMoney = () => {
     const findWorth = questionsArr.find((q) => q.id === questionObj.id - 1);
-    findWorth !== undefined
-      ? endGame("Thanks for playing!", findWorth.worth)
-      : "";
+    if (findWorth !== undefined) {
+      setEndGame({
+        playing: false,
+        msg: `Thanks for playing! You took: £${findWorth.worth}`,
+      });
+    }
   };
 
   return (
@@ -13,7 +17,7 @@ const Stack = ({ questionsArr, questionObj, endGame, formatMoney }) => {
       {questionsArr.map((arr, i) => (
         <span
           key={i}
-          // highlight row starting from after the first q
+          // Highlight amount won AFTER each q is answered correctly
           className={`flex flex-row py-1 font-bold text-white 
         ${
           i + 2 == questionObj.id
@@ -23,6 +27,7 @@ const Stack = ({ questionsArr, questionObj, endGame, formatMoney }) => {
         >
           <p className="w-1/3 text-center">{i + 1}</p>
           <p
+            // White text for every 5th amount
             className={`
           ${(i + 1) % 5 === 0 && i !== 0 ? "text-white " : "text-orange-400"}
          `}

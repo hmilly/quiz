@@ -2,6 +2,13 @@ import Image from "next/image";
 import React from "react";
 
 const LifeLines = ({ allHints, setAllHints, questionObj, setQuestionObj }) => {
+  const updateLifelines = (hint, i) => {
+    // Set new hints - disable used button
+    const newHintsArr = [...allHints];
+    newHintsArr[i] = { ...hint, used: true };
+    setAllHints(newHintsArr);
+  };
+
   const manageHints = (hints, i) => {
     // find id of correct answer and other random id
     const correctID = questionObj.answers.indexOf(questionObj.correctAnswer);
@@ -12,22 +19,19 @@ const LifeLines = ({ allHints, setAllHints, questionObj, setQuestionObj }) => {
     const generatedId = randomID();
     const newQuestionsArray = [...questionObj.answers];
 
+    // check if hint has been used this turn
+    const unusedHint = questionObj.answers.every((a) => a.length > 1);
     // Remove 2 wrong answers from the array
-    newQuestionsArray.map((q, i) => {
-      i !== generatedId && i !== correctID
-        ? (newQuestionsArray[i] = "")
-        : (newQuestionsArray[i] = q);
-    });
+    if (unusedHint) {
+      newQuestionsArray.map((q, i) => {
+        i !== generatedId && i !== correctID
+          ? (newQuestionsArray[i] = "")
+          : (newQuestionsArray[i] = q);
+      });
 
-    setQuestionObj({ ...questionObj, answers: newQuestionsArray });
-    updateLifelines(hints, i);
-  };
-
-  const updateLifelines = (hint, i) => {
-    // Set new hints - disable used button
-    const newHintsArr = [...allHints];
-    newHintsArr[i] = { ...hint, used: true };
-    setAllHints(newHintsArr);
+      setQuestionObj({ ...questionObj, answers: newQuestionsArray });
+      updateLifelines(hints, i);
+    }
   };
 
   return (
