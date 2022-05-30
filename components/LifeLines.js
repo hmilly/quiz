@@ -42,7 +42,7 @@ const LifeLines = ({ allHints, setAllHints, questionObj, setQuestionObj }) => {
             onClick={() => manageHints(hint, i)}
             key={i}
             disabled={hint.used}
-            className={`rounded-full border-4 bg-black h-16 w-24 md:h20 md:w-32 m-4 
+            className={`rounded-full border-4 bg-black h-16 w-24 md:h20 md:w-32 m-2 
           ${hint.used ? "border-red-900 line-through " : "border-blue-400 "}`}
           >
             {hint.name}

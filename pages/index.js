@@ -71,7 +71,7 @@ const Start = () => {
         <div className="bg-opacityBlack h-full w-full absolute top-0 left-0 grid content-center justify-center gap-10">
           <p className="custom-border">{endGame.msg}</p>
           <button
-            className="py-4 rounded-md border-4 m-[0_auto] w-40 border-black text-3xl font-bold md:py-6 md:w-60 bg-white"
+            className="py-4 rounded-md border-4 m-[0_auto] w-40 border-black text-3xl font-bold bg-white md:py-6 md:w-60"
             onClick={() => {
               setEndGame({ ...endGame, playing: true });
               setQuestionObj(questionsArr.set_1[0]);
