@@ -5,6 +5,7 @@ module.exports = {
   ],
   theme: {
     screens: {
+      xs: "400px",
       sm: "636px",
       md: "768px",
       lg: "976px",
@@ -24,10 +25,10 @@ module.exports = {
       0: "0",
       2: "2px",
       3: "3px",
-      4: "4px",
-      6: "6px",
+      4: "6px",
+      6: "16px",
       8: "20px",
-      10: "33px",
+      10: "27px",
     },
   },
   plugins: [],

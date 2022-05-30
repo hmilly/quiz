@@ -52,7 +52,7 @@ const Start = () => {
   return (
     <main className="h-screen relative grid grid-cols-1 grid-rows-[50px_auto]">
       <Header />
-      <div className="grid grid-cols-[2fr_1fr] bg-navy grid-rows-[3fr_2fr]">
+      <div className="grid grid-cols-[2fr_1fr] bg-navy lg:grid-rows-[3fr_2fr]">
         <Card questionObj={questionObj} analyseAnswer={analyseAnswer} />
         <LifeLines
           allHints={allHints}
@@ -71,7 +71,7 @@ const Start = () => {
         <div className="bg-opacityBlack h-full w-full absolute top-0 left-0 grid content-center justify-center gap-10">
           <p className="custom-border">{endGame.msg}</p>
           <button
-            className="px-16 py-6 rounded-md border-4 m-6 border-black text-3xl font-bold bg-white"
+            className="py-4 rounded-md border-4 m-[0_auto] w-40 border-black text-3xl font-bold md:py-6 md:w-60 bg-white"
             onClick={() => {
               setEndGame({ ...endGame, playing: true });
               setQuestionObj(questionsArr.set_1[0]);

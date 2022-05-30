@@ -13,7 +13,7 @@ const Stack = ({ questionsArr, questionObj, setEndGame }) => {
   };
 
   return (
-    <div className="col-start-2 flex flex-col-reverse  border-blue-400 border-4 ">
+    <div className="col-start-2 flex-col-reverse sm:flex hidden border-blue-400 border-4 ">
       {questionsArr.map((arr, i) => (
         <span
           key={i}
