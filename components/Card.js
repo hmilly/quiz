@@ -10,8 +10,8 @@ const Card = ({ analyseAnswer, questionObj: { question, answers } }) => {
   }, [blocked]);
 
   return (
-    <div className="row-start-2 col-start-1 col-end-3 grid grid-row-2 grid-col-1 content-start gap-8 py-2 px-8 transition-colors duration-300 ease-in-out ">
-      <h2 className="custom-border">{question}</h2>
+    <div className="row-start-2 col-start-1 col-end-3 grid grid-row-2 grid-col-1 content-start gap-8 py-2 px-2 md:p-8 transition-colors duration-300 ease-in-out ">
+      <h2 className="custom-border custom-extended">{question}</h2>
       <div className="grid sm:grid-cols-2 sm:grid-rows-2 gap-x-14 gap-y-4 ">
         {answers.map((a, i) => (
           <button

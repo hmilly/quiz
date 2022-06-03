@@ -21,7 +21,7 @@ const Start = () => {
       }, 2000);
     } else {
       // id to 15 to highlight correct £ on the board
-      setQuestionObj({ ...questionObj, id: 15 });
+      setQuestionObj({ ...questionObj, id: 16 });
       setEndGame({
         playing: false,
         msg: `CONGRATULATIONS - YOU WON $1 MILLION!!`,
@@ -74,7 +74,7 @@ const Start = () => {
             className="py-4 rounded-md border-4 m-[0_auto] w-40 border-black text-3xl font-bold bg-white md:py-6 md:w-60"
             onClick={() => {
               setEndGame({ ...endGame, playing: true });
-              setQuestionObj(questionsArr.set_1[0]);
+              setQuestionObj(questionsArr.set_1[2]);
               setAllHints(startingHints);
             }}
           >
