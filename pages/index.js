@@ -15,7 +15,7 @@ const Start = () => {
   });
 
   const correctAnswer = (id) => {
-    if (id <= 13) {
+    if (id <= 14) {
       setTimeout(() => {
         setQuestionObj(questionsArr.set_1[id]);
       }, 2000);
@@ -50,31 +50,36 @@ const Start = () => {
   };
 
   return (
-    <main className="h-screen relative grid grid-cols-1 grid-rows-[50px_auto]">
+    <main className="h-screen grid grid-cols-1 grid-rows-[50px_auto]">
       <Header />
-      <div className="grid grid-cols-[2fr_1fr] bg-navy lg:grid-rows-[3fr_2fr]">
+      <div className="grid grid-rows:[2fr_1fr] grid-cols-1 bg-navy">
+        <div className="grid grid-cols-1 grid-rows-[1fr_100px] sm:grid-cols-[2fr_1fr] justify-items-center sm:grid-rows-1">
+          <LifeLines
+            allHints={allHints}
+            setAllHints={setAllHints}
+            questionObj={questionObj}
+            setQuestionObj={setQuestionObj}
+          />
+          <Stack
+            questionsArr={questionsArr.set_1}
+            questionObj={questionObj}
+            setEndGame={setEndGame}
+          />
+        </div>
         <Card questionObj={questionObj} analyseAnswer={analyseAnswer} />
-        <LifeLines
-          allHints={allHints}
-          setAllHints={setAllHints}
-          questionObj={questionObj}
-          setQuestionObj={setQuestionObj}
-        />
-        <Stack
-          questionsArr={questionsArr.set_1}
-          questionObj={questionObj}
-          setEndGame={setEndGame}
-        />
       </div>
       {/* Display overscreen when game ends */}
       {!endGame.playing ? (
         <div className="bg-opacityBlack h-full w-full absolute top-0 left-0 grid content-center justify-center gap-10">
-          <p className="custom-border">{endGame.msg}</p>
+          <span className="custom-border flex items-center justify-center ">
+            <h2>{endGame.msg}</h2>
+          </span>
+
           <button
             className="py-4 rounded-md border-4 m-[0_auto] w-40 border-black text-3xl font-bold bg-white md:py-6 md:w-60"
             onClick={() => {
               setEndGame({ ...endGame, playing: true });
-              setQuestionObj(questionsArr.set_1[2]);
+              setQuestionObj(questionsArr.set_1[0]);
               setAllHints(startingHints);
             }}
           >

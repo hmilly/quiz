@@ -35,21 +35,21 @@ const LifeLines = ({ allHints, setAllHints, questionObj, setQuestionObj }) => {
   };
 
   return (
-    <div className="row-start-1 col-start-1 col-end-3 grid grid-cols-[auto_1fr] grid-rows-1 sm:col-end-2 ">
-      <section className="text-white xs:grid xs:grid-cols-1fr xs:grid-rows-3 xs:items-center">
+    <div className="grid grid-cols-[auto_1fr] gap-2">
+      <section className="text-white grid grid-cols-3 xs:grid-cols-1 xs:grid-rows-3 items-center">
         {allHints.map((hint, i) => (
           <button
             onClick={() => manageHints(hint, i)}
             key={i}
             disabled={hint.used}
-            className={`rounded-full border-4 bg-black h-16 w-24 md:h20 md:w-32 m-2 
+            className={`rounded-full border-4 bg-black h-14 w-20 md:h-20 md:w-32 m-2 
           ${hint.used ? "border-red-900 line-through " : "border-blue-400 "}`}
           >
             {hint.name}
           </button>
         ))}
       </section>
-      <div className="justify-self-center self-center xs:block hidden">
+      <div className="justify-self-center self-center hidden xs:block">
         <Image
           loading="lazy"
           src="/quiz.jpg"

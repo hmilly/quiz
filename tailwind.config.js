@@ -14,7 +14,7 @@ module.exports = {
     extend: {
       colors: {
         navy: "#000080",
-        opacityBlack: "#00000090",
+        opacityBlack: "#00000060",
       },
     },
     fontFamily: {
@@ -29,7 +29,7 @@ module.exports = {
       6: "16px",
       8: "20px",
       10: "25px",
-      12: "38px",
+      12: "",
     },
   },
   plugins: [],

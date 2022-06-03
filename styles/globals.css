@@ -4,13 +4,14 @@
 
 @layer components {
   .custom-border {
-    @apply w-auto h-[54px] relative bg-black mx-5 text-center border-2 border-white text-white px-2
-     after:absolute after:-left-6 after:bottom-0 after:w-0 after:h-0 after:border-y-transparent after:border-y-10 after:border-r-10 after:border-black before:absolute before:-right-6 before:bottom-0 before:w-0 before:h-0 before:border-y-transparent before:border-y-10 before:border-l-10 before:border-black;
+    @apply w-auto h-[54px] relative bg-black mx-5 text-center border-2 border-white text-white px-2 after:absolute after:-left-6 after:bottom-0 after:w-0 after:h-0 after:border-y-transparent after:border-y-10 after:border-r-10 after:border-black before:absolute before:-right-6 before:bottom-0 before:w-0 before:h-0 before:border-y-transparent before:border-y-10 before:border-l-10 before:border-black
+  }
+
+  .custom-hover {
+    @apply hover:border-blue-400 hover:after:border-blue-400 hover:after:border-y-transparent hover:before:border-blue-400 hover:before:border-y-transparent
   }
 
   .custom-extended {
-    @apply h-[104px] xs:h-[80px] md:h-[54px]
-    after:border-y-0 xs:after:border-y-12 md:after:border-y-10
-    before:border-y-0 xs:before:border-y-12 md:before:border-y-10
+    @apply h-[104px] xs:h-[80px] md:h-[54px] after:border-y-0 xs:after:border-y-12 md:after:border-y-10 before:border-y-0 xs:before:border-y-12 md:before:border-y-10
   }
 }
