@@ -23,7 +23,7 @@ const Card = ({ analyseAnswer, questionObj: { question, answers } }) => {
               analyseAnswer(a);
             }}
             // block buttons while new question set
-            className={`custom-border custom-hover hover:bg-opacityBlack focus:border-red-700
+            className={`custom-border custom-hover hover:bg-opacityBlack active:border-red-700
             ${blocked ? "bg-opacityBlack cursor-not-allowed" : "bg-black "}`}
             key={i}
           >
